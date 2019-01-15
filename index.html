@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smachna Hata</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div id="logo" class="menuUp">
+        <div class="logo-display">
+            <img class="header-logo-img" src="photo/logo.svg" style="width: 157px;height: 70px;">
+        </div>
+        <div id="navToggle"><a href="#">Меню</a></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#main">Головна</a></li>
+            <li><a href="#menu-subscribe">Меню</a></li>
+            <li><a href="#events1">Події&Новини</a></li>
+            <li><a href="#galery">Галерея</a>
+            <li><a href="#contacts">Контакти</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- slider -->
+
+<section class="slider-wrapper" id="main">
+    <div class="main-wrapper">
+        <div class="slyder-wrapper">
+            <div class="slideshow-container">
+
+                <div class="mySlides slideintoleft slide-1">
+                    <img src="photo/photo1.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides slideintoleft slide-2 hide">
+                    <img src="photo/photo2.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides slideintoleft slide-3 hide">
+                    <img src="photo/photo3.jpg" style="width:100%">
+                </div>
+
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
+            </div>
+            <script src="./script/slider-header.js"></script>
+        </div>
+    </div>
+</section>
+
+<!--slider end-->
+
+
+</body>
+<script>
+    // navbar script
+    $(document).ready(function() {
+        $("#navToggle a").click(function(e){
+            e.preventDefault();
+
+            $("header > nav").slideToggle("medium");
+            $("#logo").toggleClass("menuUp menuDown");
+        });
+
+        $(window).resize(function() {
+            if($( window ).width() >= "815") {
+                $("header > nav").css("display", "block");
+
+                if($("#logo").attr('class') == "menuDown") {
+                    $("#logo").toggleClass("menuUp menuDown");
+                }
+            }
+            else {
+                $("header > nav").css("display", "none");
+            }
+        });
+
+        $("header > nav > ul > li > a").click(function(e) {
+            if($( window ).width() <= "815") {
+                if($(this).siblings().size() > 0 ) {
+                    $(this).siblings().slideToggle("fast")
+                    $(this).children(".toggle").html($(this).children(".toggle").html() == 'close' ? 'expand' : 'close');
+                }
+            }
+        });
+    });
+    // navbar script finished
+</script>
